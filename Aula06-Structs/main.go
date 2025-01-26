@@ -54,39 +54,55 @@ func main() {
 	lucas := CreateUser(4, true, "Lucas", "lucas@hotmail.com", []byte("129"), time.Date(1996, time.February, 05, 0, 0, 0, 0, time.Local), extrema)
 
 	Print(matheus)
-	Print(pamella)
-	Print(gerson)
+	fmt.Println("------------------------------------------------------------")
 
-	Print(lucas)
+	Print(pamella)
+	fmt.Println("------------------------------------------------------------")
+
+	Print(gerson)
+	fmt.Println("------------------------------------------------------------")
+
 	fmt.Println("Alterando nome do Lucas")
 	lucas.Name = "Zin" // As stucts se comportam como métodos públicos
 	Print(lucas)
+
+	fmt.Println("------------------------------------------------------------")
 
 	fmt.Println("Desativando o Matheus")
 	matheus.Deactivate()
 
 	Print(matheus)
+	fmt.Println("------------------------------------------------------------")
 
 	fmt.Println("Trocando a cidade da Pâmella")
 	pamella.City = "Belo Horizonte" // Pela struct Address compor a struct User, consigo alterar diretamente a propriedade
 
 	Print(pamella)
+	fmt.Println("------------------------------------------------------------")
 
-	fmt.Println("Trocando o ID do gerson")
+	fmt.Println("Trocando o ID do Gerson")
 	gerson.Audit.ID = 10 // Pela struct Audit ser uma variável dentro da struct User, preciso acessar ela antes de trocar a propriedade ID
+
+	Print(gerson)
+	fmt.Println("------------------------------------------------------------")
+
+	fmt.Println("Ativando um usuário")
+	gerson.Activate()
 
 	Print(gerson)
 }
 
 func CreateUser(id int, active bool, name string, email string, password []byte, birthdate time.Time, address Address) User {
 	// No CreateUser ambas as structs devem ser adicionadas no respectivo struct
+	deletedAt := Ternary(active, time.Time{}, time.Now())
+
 	return User{
 		Audit: Base{
 			ID:         id,
 			Active:     active,
 			Created_at: time.Now(),
 			Updated_at: time.Now(),
-			Deleted_at: Ternary(active, time.Now(), time.Time{}),
+			Deleted_at: deletedAt,
 		},
 		Address: Address{
 			City:    address.City,
