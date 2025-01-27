@@ -3,7 +3,7 @@ package entity
 import "time"
 
 type Audit struct {
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt time.Time
+	Created_At time.Time
+	Updated_At time.Time
+	Deleted_At time.Time
 }
