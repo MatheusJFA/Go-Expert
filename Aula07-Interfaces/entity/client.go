@@ -10,10 +10,10 @@ import (
 type AccountType string
 
 const (
-	CLIENT      AccountType = "Client"
-	CLIENT_PLUS AccountType = "Client_Plus"
-	PREMIUM     AccountType = "Premium"
-	VIP         AccountType = "VIP"
+	BASIC   AccountType = "Basic"
+	PLUS    AccountType = "Plus"
+	PREMIUM AccountType = "Premium"
+	VIP     AccountType = "VIP"
 )
 
 type Client struct {
