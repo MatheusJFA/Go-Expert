@@ -1,0 +1,12 @@
+CEP: 30660-410
+Logradouro: Rua Telaviv
+Complemento: 
+Bairro: Olaria (Barreiro)
+Localidade: Belo Horizonte
+UF: MG
+Estado: Minas Gerais
+Região: Sudeste
+IBGE: 3106200
+GIA: 
+DDD: 31
+SIAFI: 4123
