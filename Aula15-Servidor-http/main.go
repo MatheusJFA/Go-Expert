@@ -70,13 +70,13 @@ func BuscaCEP(cep string) (*CEP, error) {
 	site := fmt.Sprintf("https://viacep.com.br/ws/%s/json/", cep)
 	site = strings.TrimRight(site, "\n")
 
-	request, err := http.Get(site)
+	response, err := http.Get(site)
 	if err != nil {
 		return nil, err
 	}
-	defer request.Body.Close() // Atraso do recurso, ou seja, ele será chamado depois do print(string(response))
+	defer response.Body.Close() // Atraso do recurso, ou seja, ele será chamado depois do print(string(response))
 
-	body, err := io.ReadAll(request.Body)
+	body, err := io.ReadAll(response.Body)
 
 	if err != nil {
 		return nil, err
