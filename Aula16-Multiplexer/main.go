@@ -9,18 +9,12 @@ func main() {
 	port := ":8080"
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/abilities", GetAbilities)
-	mux.HandleFunc("/pokemon", GetPokemon)
+
+	ability := &entity.Ability{}
+	pokemon := &entity.Pokemon{}
+
+	mux.Handle("/abilities", ability)
+	mux.Handle("/pokemon", pokemon)
 	http.ListenAndServe(port, mux)
 
-}
-
-func GetAbilities(writer http.ResponseWriter, request *http.Request) {
-	ability := &entity.Ability{}
-	ability.ServeHTTP(writer, request)
-}
-
-func GetPokemon(writer http.ResponseWriter, request *http.Request) {
-	pokemon := &entity.Pokemon{}
-	pokemon.ServeHTTP(writer, request)
 }
