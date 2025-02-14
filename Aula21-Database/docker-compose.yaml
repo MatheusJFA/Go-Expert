@@ -1,0 +1,14 @@
+services:
+  database: 
+    image: mysql:5.7
+    container_name: database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: aula21
+      MYSQL_USER: aula21
+      MYSQL_PASSWORD: aula21
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
