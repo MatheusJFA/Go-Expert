@@ -3,7 +3,6 @@ module GoExpert
 go 1.21.5
 
 require (
-	github.com/google/uuid v1.6.0
 	gorm.io/driver/mysql v1.5.7
 	gorm.io/gorm v1.25.12
 )

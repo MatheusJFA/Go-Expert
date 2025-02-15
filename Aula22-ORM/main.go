@@ -40,6 +40,10 @@ func main() {
 		{Name: "Product 3", Price: 30.00},
 		{Name: "Product 4", Price: 40.00},
 		{Name: "Product 5", Price: 50.00},
+		{Name: "Product 6", Price: 60.00},
+		{Name: "Product 7", Price: 70.00},
+		{Name: "Product 8", Price: 80.00},
+		{Name: "Product 9", Price: 90.00},
 	}
 
 	fmt.Println("Criando uma lista de produtos")
@@ -78,18 +82,26 @@ func main() {
 		product.information()
 	}
 
-	// Delete
+	// Soft Delete
 	db.Delete(&product)
 	fmt.Println("Deletando o produto com ID:", product.ID)
 
-	// Read many
+	// Read 3 Elements in the second page
 	var remainingProducts []Product
-	db.Find(&remainingProducts)
-	fmt.Println("Lendo todos os produtos após a deleção")
+	db.Limit(3).Offset(2).Find(&remainingProducts)
+	fmt.Println("Lendo os 3 primeiros produtos da segunda página")
 	for _, product := range remainingProducts {
 		product.information()
 	}
 
+	// Get Products with price equal or greater than 50
+
+	var expensiveProducts []Product
+	db.Where("price >= ?", 50).Find(&expensiveProducts)
+	fmt.Println("Lendo os produtos com preço maior ou igual a 50")
+	for _, product := range expensiveProducts {
+		product.information()
+	}
 }
 
 func (product Product) information() {
